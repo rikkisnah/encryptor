@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "encryptor"
+version = "0.1.0"
+description = "CLI tool to encrypt and decrypt files, directories, and text"
+requires-python = ">=3.9"
+dependencies = ["cryptography>=41.0.5"]
+readme = "README.md"
+license = { file = "LICENSE" }
+
+[project.scripts]
+encryptor = "encryptor.cli:main"
+
+[dependency-groups]
+dev = [
+  "pytest>=8.0",
+  "pytest-cov>=5.0",
+  "ruff>=0.5",
+]
+
+[tool.pytest.ini_options]
+addopts = ["--cov=encryptor", "--cov-fail-under=100"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.ruff.format]
+quote-style = "double"
